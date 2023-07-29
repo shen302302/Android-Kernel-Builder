@@ -183,6 +183,11 @@ jobs:
           echo "🤔 $args"
           echo "ARCH=$ARCH" >> $GITHUB_OUTPUT
           echo "args=$args" >> $GITHUB_OUTPUT
+          
+      - name: "📄 Generate .config"
+        working-directory: ${{ env.KERNEL_NAME }}
+        run: |
+          make oldconfig  # 添加这一行以生成 .config 配置文件
 
       - name: "😋 Update KernelSU"
         working-directory: ${{ env.KERNEL_NAME }}
